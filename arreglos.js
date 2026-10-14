@@ -56,7 +56,7 @@ function pintarArregloIzquierda(){
             </td>
 
             <td>
-                <button class="btn-mover">
+                <button class="btn-mover" onclick="moverHaciaDerecha(${i})">
                     ➜
                 </button>
             </td>`;
@@ -120,5 +120,21 @@ function eliminarDerecho(indice){
     edadesDerecha.splice(indice, 1);
 
     // Actualizar visualmente la tabla derecha
+    pintarArregloDerecha();
+}
+
+function moverHaciaDerecha(indice){
+
+    //Obtener la edad que queremos mover
+    let edad = edadesIzquierda[indice];
+
+    //Agregar la edad al arreglo derecho
+    edadesDerecha.push(edad);
+
+    //Eliminar la edad del arreglo izquierdo
+    edadesIzquierda.splice(indice, 1);
+
+    //Actualizar visualmente ambas tablas
+    pintarArregloIzquierda();
     pintarArregloDerecha();
 }
