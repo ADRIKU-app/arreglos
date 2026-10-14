@@ -65,3 +65,6 @@ function pintarArregloIzquierda(){
             tabla.appendChild(fila);
     }
 }
+
+function eliminarIzquierda(indice){
+}
