@@ -67,10 +67,51 @@ function pintarArregloIzquierda(){
 }
 
 function eliminarIzquierdo(indice){
-    
+
     // Eliminar el elemento según su posición
     edadesIzquierda.splice(indice, 1);
 
     // Actualizar visualmente la tabla izquierda
     pintarArregloIzquierda();
+}
+
+function pintarArregloDerecha(){
+
+    // Obtener el cuerpo de la tabla derecha
+    let tabla = document.getElementById("tablaDerecha");
+    
+    // Limpiar la tabla antes de pintar de nuevo
+    tabla.innerHTML = "";
+
+    // Recorrer el arreglo de edadesDerecha y crear una fila por cada edad
+    for( let i = 0; i<edadesDerecha.length; i++){
+        let fila =document.createElement("tr");
+
+        fila.innerHTML = `
+            <td>${edadesDerecha[i]}</td>
+            <td>
+                <button class="btn-eliminar" onclick="eliminarDerecho(${i})">
+                    Eliminar
+                </button>
+            </td>
+
+            <td>
+                <button class="btn-mover">
+                    ⬅
+                </button>
+            </td>`;
+            
+            // Agregar la fila a la tabla
+            tabla.appendChild(fila);
+
+    }
+}
+
+function eliminarDerecho(indice){
+
+    // Eliminar el elemento según su posición
+    edadesDerecha.splice(indice, 1);
+    
+    // Actualizar visualmente la tabla derecha
+    pintarArregloDerecha();
 }
