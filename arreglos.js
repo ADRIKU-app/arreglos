@@ -17,7 +17,7 @@ function agregarEdad(){
 
     // Verificar que sea un número entero positivo
     //Number(): convierte el contenido en un valor numérico
-    if(!Number.isInteger(edadNumero) || edadNumero < 0){
+    if(!Number.isInteger(edadNumero) || edadNumero <= 0){
     alert("Por favor ingrese un número entero positivo");
     return;
     }
@@ -50,7 +50,7 @@ function pintarArregloIzquierda(){
         fila.innerHTML = `
             <td>${edadesIzquierda[i]}</td>
             <td>
-                <button class="btn-eliminar">
+                <button class="btn-eliminar" onclick="eliminarIzquierdo(${i})">
                     Eliminar
                 </button>
             </td>
@@ -66,5 +66,11 @@ function pintarArregloIzquierda(){
     }
 }
 
-function eliminarIzquierda(indice){
+function eliminarIzquierdo(indice){
+    
+    // Eliminar el elemento según su posición
+    edadesIzquierda.splice(indice, 1);
+
+    // Actualizar visualmente la tabla izquierda
+    pintarArregloIzquierda();
 }
