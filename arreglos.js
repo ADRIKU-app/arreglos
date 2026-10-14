@@ -88,16 +88,15 @@ function pintarArregloDerecha(){
         let fila =document.createElement("tr");
 
         fila.innerHTML = `
-            <td>${edadesDerecha[i]}</td>
-            <td>
-                <button class="btn-eliminar" onclick="eliminarDerecho(${i})">
-                    Eliminar
-                </button>
-            </td>
-
             <td>
                 <button class="btn-mover">
                     ⬅
+                </button>
+            </td>
+            <td>${edadesDerecha[i]}</td>  
+            <td>
+                <button class="btn-eliminar" onclick="eliminarDerecho(${i})">
+                    Eliminar
                 </button>
             </td>`;
             
@@ -109,9 +108,17 @@ function pintarArregloDerecha(){
 
 function eliminarDerecho(indice){
 
+    // Verificar que el índice sea válido
+    if (!Number.isInteger(indice) ||
+        indice < 0 ||
+        indice >= edadesDerecha.length) {
+
+        return;
+    }
+
     // Eliminar el elemento según su posición
     edadesDerecha.splice(indice, 1);
-    
+
     // Actualizar visualmente la tabla derecha
     pintarArregloDerecha();
 }
